@@ -15,3 +15,15 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+    record={}
+    with open ('files/input/data.csv','r',encoding='utf-8') as file:
+        for line in file:
+            letter= line.strip().split('\t')[0]
+            if letter in record:
+                record[letter] += 1
+            else:
+                record[letter]= 1
+    q= sorted (record.items())
+    return q\
+    
+print(pregunta_02())

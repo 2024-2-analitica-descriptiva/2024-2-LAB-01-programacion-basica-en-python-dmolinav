@@ -14,3 +14,11 @@ def pregunta_01():
     214
 
     """
+    suma=0
+    with open ('files/input/data.csv','r',encoding='utf-8') as file:
+        for line in file:
+            columna= line.strip().split('\t')
+            suma += int(columna[1])
+    return suma
+
+print (pregunta_01())

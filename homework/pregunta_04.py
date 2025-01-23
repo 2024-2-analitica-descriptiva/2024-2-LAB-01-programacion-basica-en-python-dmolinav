@@ -26,3 +26,17 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    permonth={}
+    with open ('files/input/data.csv','r',encoding='utf-8') as file:
+        for line in file:
+            date= line.strip().split('\t')[2]
+            month=date.split('-')[1]
+            if month in permonth:
+                permonth[month]+= 1
+            else:
+                permonth[month]= 1
+    eq= sorted(permonth.items())
+    return eq
+for i in pregunta_04():
+    print (i)
+

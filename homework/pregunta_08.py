@@ -27,3 +27,20 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    records = {}
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            columns = line.strip().split("\t")
+            initial = columns[0]
+            value = int(columns[1])
+            if value in records:
+                records[value].append(initial)
+            else:
+                records[value] = [initial]
+    
+    result = [(val, sorted(list(set(records[val]))))
+        for val in sorted(records.keys())]
+
+    return result
+print(pregunta_08())
+        

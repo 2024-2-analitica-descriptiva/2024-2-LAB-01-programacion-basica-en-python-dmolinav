@@ -15,3 +15,17 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    records = {}
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            key = line.strip().split("\t")[0]
+            column_5 = line.strip().split("\t")[4]
+            values = [int(value.split(":")[1]) for value in column_5.split(",")]
+            total = sum(values)
+            if key in records:
+                records[key] += total
+            else:
+                records[key] = total
+        sorted_records = dict(sorted(records.items()))
+        return sorted_records
+print(pregunta_12())

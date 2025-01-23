@@ -24,3 +24,17 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    records = {}
+    with open("files/input/data.csv", "r", encoding="utf-8") as file:
+        for line in file:
+            dictionary = line.strip().split("\t")[4]
+            pairs = dictionary.split(",")
+            for pair in pairs:
+                key, _ = pair.split(":")
+                if key in records:
+                    records[key] += 1
+                else:
+                    records[key] = 1
+        return records
+    
+print(pregunta_09())
